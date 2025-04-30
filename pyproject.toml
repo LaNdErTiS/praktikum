@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "praktikum"
+version = "0.1.0"
+description = "Praktikum task"
+authors = [
+    { name="Ivan Gavalidi", email="malisek00@mail.ru" }
+]
+dependencies = [
+    "mypy>=1.0.0",
+    "black>=23.1.0",
+    "ruff>=0.0.245",
+    "pytest>=7.0.0",
+    "tox>=4.25.0",
+    "pytest-cov",
+    "types-setuptools",
+]
+requires-python = ">=3.13"
+
+[tool.pytest.ini_options]
+markers = "smoke: mark smoke tests"
+log_cli = true
+log_cli_level = "DEBUG"
+addopts = "-v --cov=src"
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+precision = 2
+
+[tool.mypy]
+namespace_packages = true
+python_version = "3.13"
+
+[tool.ruff]
+fix = true
+lint.select = [
+    "A",  # Flake8Builtins
+    "B",  # Flake8Bugbear
+    "C",  # Flake8Comprehensions
+    "E",  # Pycodestyle
+    "F",  # Pyflakes
+    "I",  # Flake8ImportConventions
+    "N",  # Flake8BlindExcept
+    "Q",  # Flake8Quotes
+    "T",  # McCabeComplexity
+    "U",  # Pyupgrade
+    "W",  # PEP 8 Imports
+    "YTT",  # Flake8TypeChecking
+]
+lint.ignore = [
+    "E203",
+    "E226",
+    "E501",
+]
+
+[tool.black]
+target-version = ['py313']
+line-length = 120
