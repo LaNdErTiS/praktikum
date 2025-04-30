@@ -1,5 +1,5 @@
 # Проект
-praktikum task
+praktikum task - https://practicum-for-students.yonote.ru/share/1bbf4ba8-b941-4965-ba21-1a8c1d24fac4/doc/untitled-1UnkOsqiXq
 
 ## Описание
 Реализация функции расчёта стоимости доставки.
