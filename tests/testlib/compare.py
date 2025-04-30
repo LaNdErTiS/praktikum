@@ -3,7 +3,7 @@ from typing import Any
 from testlib.logger import logger
 
 
-def compare_data(data1: Any, data2: Any, operator: str = "=") -> None:
+def compare_data(data1: Any, data2: Any, operator: str = "==") -> None:
     """
     :description: Функция сравнения двх объектов
     :param data1: Первый объект для сравнения
@@ -14,7 +14,7 @@ def compare_data(data1: Any, data2: Any, operator: str = "=") -> None:
     """
     logger.info(f"Сравниваем {data1} с {data2} используя {operator}")
 
-    if operator == "=":
+    if operator == "==":
         assert data1 == data2
     elif operator == "is":
         assert data1 is data2
