@@ -10,7 +10,7 @@ praktikum task
 
 ## Установка
 ```sh
-git clone https://github.com/<TODO>/praktikum.git
+git clone https://github.com/LaNdErTiS/praktikum.git
 cd praktikum
 python3 -m venv .venv
 source .venv/bin/activate
