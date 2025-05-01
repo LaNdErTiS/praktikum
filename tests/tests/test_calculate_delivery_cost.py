@@ -110,19 +110,26 @@ def test_logic_calculate_delivery_cost(
     "distance, size, fragile, delivery_load_level",
     [
         ("invalid_distance", Size.BIG, False, DeliveryLoadLevel.VERY_HIGH),
+        (
+            Distance.MORE_THIRTY,
+            Size.BIG,
+            "invalid_fragile",
+            DeliveryLoadLevel.VERY_HIGH,
+        ),
         (Distance.MORE_THIRTY, "invalid_size", False, DeliveryLoadLevel.VERY_HIGH),
         (Distance.MORE_THIRTY, Size.BIG, False, "invalid_delivery_load_level"),
     ],
     ids=[
         "invalid_distance_type",
+        "invalid_fragile_type",
         "invalid_size_type",
         "invalid_delivery_load_level_type",
     ],
 )
-def test_invalid_param(
+def test_invalid_type_of_params(
     distance: Distance | str,
     size: Size | str,
-    fragile: bool,
+    fragile: bool | str,
     delivery_load_level: DeliveryLoadLevel | str,
 ) -> None:
     logger.info(
@@ -143,14 +150,16 @@ def test_invalid_param(
             Size.BIG,
         ),
         (Distance.MORE_THIRTY, Size.BIG, True),
+        (Distance.MORE_THIRTY, Size.BIG, False, DeliveryLoadLevel.VERY_HIGH, "extra"),
     ],
     ids=[
         "miss_all",
         "miss_three_last_params",
         "miss_two_last_params",
         "miss_one_last_param",
+        "extra_param",
     ],
 )
-def test_missing_param(test_case) -> None:
-    with pytest.raises(TypeError):
+def test_incorrect_number_of_params(test_case: tuple) -> None:
+    with pytest.raises(ValueError):
         calculate_delivery_cost(*test_case)
