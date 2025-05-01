@@ -15,9 +15,11 @@ from praktikum_task.const import (
     Distance,
     Size,
 )
+from praktikum_task.helpers import validate_args
 from praktikum_task.logger import logger
 
 
+@validate_args(Distance, Size, bool, DeliveryLoadLevel)
 def calculate_delivery_cost(
     distance: Distance,
     size: Size,
@@ -37,21 +39,6 @@ def calculate_delivery_cost(
     возвращает None как сигнал невозможности расчёта
     """
 
-    # Проверка на корректность расстояния
-    if not isinstance(distance, Distance):
-        logger.error("Некорректное значение расстояния")
-        return None
-
-    # Проверка на корректность размера
-    if not isinstance(size, Size):
-        logger.error("Некорректное значение размера")
-        return None
-
-    # Проверка на корректность уровня загрузки
-    if not isinstance(delivery_load_level, DeliveryLoadLevel):
-        logger.error("Некорректное значение уровня загрузки")
-        return None
-
     # Расчёт стоимости по расстоянию
     distance_cost: float = DISTANCE_COST_MAP[distance]
     logger.debug("Стоимость доставки по расстоянию: %f", distance_cost)
@@ -66,7 +53,7 @@ def calculate_delivery_cost(
 
     # Проверка на хрупкость и большое расстояние
     if fragile and distance == Distance.MORE_THIRTY:
-        logger.error("Невозможно доставить хрупкий груз на расстояние более 30 км")
+        logger.warning("Невозможно доставить хрупкий груз на расстояние более 30 км")
         return None
 
     # Суммируем стоимость
