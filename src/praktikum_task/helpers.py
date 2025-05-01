@@ -1,3 +1,7 @@
+"""
+Определение различных служебных функций
+"""
+
 from functools import wraps
 from typing import Any
 
