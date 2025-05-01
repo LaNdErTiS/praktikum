@@ -6,7 +6,7 @@ from praktikum_task.data_models.delivery_load import DeliveryLoadLevel
 from praktikum_task.data_models.distance import Distance
 from praktikum_task.data_models.size import Size
 
-DISTANCE_COST_MAP: dict[Distance | int, int] = {
+DISTANCE_COST_MAP: dict[Distance, int] = {
     Distance.UP_TO_TWO: 50,
     Distance.UP_TO_TEN: 100,
     Distance.UP_TO_THIRTY: 200,
