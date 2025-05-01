@@ -70,10 +70,10 @@ from praktikum_task.const import DeliveryLoadLevel, Distance, Size
         ),
         (Distance.MORE_THIRTY, Size.BIG, False, DeliveryLoadLevel.INCREASED, 600.0),
         # технически кейс на None уже есть выше и ниже можно рассмаривать как дубль
-        # учитвыя, что мы рассматриваем исходный код как белый ящик, но
-        # уже была применена техника попарного тестирования, которая сократил 64 -> 16
+        # учитывая, что мы рассматриваем исходный код как белый ящик, но
+        # уже была применена техника попарного тестирования, которая сократила 64 -> 16
         # дальнейшее сокращение возможно, но несет определенные риски, которые нужно
-        # оценивать, аналогично про 400.0
+        # оценивать и принимать. аналогично про 400.0
         (Distance.MORE_THIRTY, Size.SMALL, True, DeliveryLoadLevel.DEFAULT, None),
         (Distance.MORE_THIRTY, Size.BIG, False, DeliveryLoadLevel.VERY_HIGH, 800.0),
     ],
