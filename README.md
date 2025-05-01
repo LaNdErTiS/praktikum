@@ -14,7 +14,7 @@ git clone https://github.com/LaNdErTiS/praktikum.git
 cd praktikum
 
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate (Linux/Mac OS) or .venv\Scripts\activate (for Windows)
 
 pip install -e .
 ```
@@ -35,6 +35,11 @@ pytest
 или
 ```sh
 tox -c tox.ini
+```
+
+## Выход
+```sh
+deactivate
 ```
 
 ## Ограничения
