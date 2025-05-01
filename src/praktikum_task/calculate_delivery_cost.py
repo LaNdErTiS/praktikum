@@ -15,10 +15,11 @@ from praktikum_task.const import (
     Distance,
     Size,
 )
-from praktikum_task.helpers import validate_args
+from praktikum_task.helpers import validate_args, validate_no_named_args
 from praktikum_task.logger import logger
 
 
+@validate_no_named_args
 @validate_args(Distance, Size, bool, DeliveryLoadLevel)
 def calculate_delivery_cost(
     distance: Distance,
