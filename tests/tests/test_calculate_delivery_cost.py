@@ -161,5 +161,19 @@ def test_invalid_type_of_params(
     ],
 )
 def test_incorrect_number_of_params(test_case: tuple) -> None:
+    logger.info("Запускаемся с пропущенными параметрами")
+
     with pytest.raises(ValueError):
         calculate_delivery_cost(*test_case)
+
+
+def test_named_args() -> None:
+    logger.info("Запускаемся с именованными параметрами")
+
+    with pytest.raises(TypeError):
+        calculate_delivery_cost(
+            distance=Distance.UP_TO_THIRTY,
+            size=Size.SMALL,
+            fragile=False,
+            delivery_load_level=DeliveryLoadLevel.HIGH,
+        )
